@@ -1,3 +1,9 @@
+# Visual Studio files
+.vs
+
+# Package-lock files
+package-lock.json
+
 # Logs
 logs
 *.log
