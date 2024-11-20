@@ -1,11 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api');
-const { startCommand } = require('./commands/start');
-const token = process.env.TOKEN;
+const { BOT_TOKEN } = require('./config');
+const commands = require('./commands/commands');
 
-console.log('Bot token', process.env.TOKEN);
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-// Commands handler
-bot.onText(/\/start/, startCommand);
+bot.onText(/\/start/, commands.startHandler(bot));
+bot.on('message', commands.messageHandler(bot));
 
-module.exports = { bot };
+module.exports = bot;
