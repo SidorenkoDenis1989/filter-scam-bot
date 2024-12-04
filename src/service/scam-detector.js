@@ -1,6 +1,9 @@
-const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 const fs = require('fs');
 
+
+const MODEL_PATH = '../train-model';
+const DATA_PATH = '../train-model/data.json';
 class ScamDetector {
   constructor(modelPath, dataPath) {
     this.modelPath = modelPath;
@@ -51,4 +54,7 @@ class ScamDetector {
   }
 }
 
-module.exports = ScamDetector;
+const scamDetectorService = new ScamDetector(MODEL_PATH, DATA_PATH);
+scamDetectorService.init();
+
+module.exports = scamDetectorService;

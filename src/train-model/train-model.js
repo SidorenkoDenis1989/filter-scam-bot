@@ -1,4 +1,4 @@
-const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 const fs = require('fs');
 
 const data = JSON.parse(fs.readFileSync('src/train-model/data.json', 'utf-8'));
@@ -30,7 +30,7 @@ async function train() {
   await model.fit(xs, ys, { epochs: 10 });
   console.log('Training completed.');
 
-  await model.save('file://model');
+  await model.save('file://src/train-model');
 }
 
 train().catch(console.error);
