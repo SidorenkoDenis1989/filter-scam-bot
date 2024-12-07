@@ -2,8 +2,8 @@ const tf = require('@tensorflow/tfjs-node');
 const fs = require('fs');
 
 
-const MODEL_PATH = '../train-model';
-const DATA_PATH = '../train-model/data.json';
+const MODEL_PATH = './src/train-model';
+const DATA_PATH = './src/train-model/data.json';
 class ScamDetector {
   constructor(modelPath, dataPath) {
     this.modelPath = modelPath;
@@ -11,7 +11,7 @@ class ScamDetector {
     this.model = null;
     this.wordIndex = null;
   }
-
+  
   async init() {
     try {
       const data = JSON.parse(fs.readFileSync(this.dataPath, 'utf-8'));
